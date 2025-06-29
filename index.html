@@ -3,606 +3,378 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TravelRoute - 旅行路线规划平台</title>
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>TravelRoute 商业计划书 - 种子轮</title>
     <style>
-        /* 自定义动画 */
-        @keyframes slideUp {
-            from { transform: translateY(100%); }
-            to { transform: translateY(0); }
+        body {
+            font-family: -apple-system, "Microsoft YaHei", sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: white;
         }
         
-        .animate-slide-up {
-            animation: slideUp 0.3s ease-out;
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
         }
         
-        .line-clamp-2 {
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 2;
+        h1 {
+            font-size: 48px;
+            margin: 0;
+            background: linear-gradient(135deg, #FF6B00 0%, #FF8534 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
         }
         
-        /* 隐藏滚动条 */
-        .hide-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+        .tagline {
+            font-size: 20px;
+            color: #666;
+            margin-top: 10px;
         }
         
-        .hide-scrollbar::-webkit-scrollbar {
+        .section {
+            margin-bottom: 50px;
+        }
+        
+        h2 {
+            font-size: 28px;
+            color: #FF6B00;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #FFE5DB;
+        }
+        
+        .highlight {
+            background: #FFF5F0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #FF6B00;
+        }
+        
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .metric-card {
+            background: #f8f8f8;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-size: 32px;
+            font-weight: bold;
+            color: #FF6B00;
+        }
+        
+        .metric-label {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .comparison-table th {
+            background: #FF6B00;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .comparison-table td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .comparison-table tr:hover {
+            background: #f5f5f5;
+        }
+        
+        .roadmap {
+            position: relative;
+            padding-left: 40px;
+            margin: 20px 0;
+        }
+        
+        .roadmap-item {
+            position: relative;
+            padding-bottom: 30px;
+        }
+        
+        .roadmap-item::before {
+            content: "";
+            position: absolute;
+            left: -40px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: #FF6B00;
+            border-radius: 50%;
+        }
+        
+        .roadmap-item::after {
+            content: "";
+            position: absolute;
+            left: -34px;
+            top: 17px;
+            width: 1px;
+            height: calc(100% - 12px);
+            background: #FFE5DB;
+        }
+        
+        .roadmap-item:last-child::after {
             display: none;
         }
-
-        /* 手机端样式 */
-        .mobile-container {
-            max-width: 375px;
-            margin: 0 auto;
-            min-height: 100vh;
-            position: relative;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .team-member {
+            background: #f8f8f8;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .demo-showcase {
+            background: #E8F5E8;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .demo-link {
+            display: inline-block;
+            background: #10B981;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: transform 0.3s;
+        }
+        
+        .demo-link:hover {
+            transform: translateY(-2px);
+        }
+        
+        .contact {
+            background: #333;
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .contact a {
+            color: #FF6B00;
+        }
+        
+        @media print {
+            body {
+                padding: 20px;
+            }
+            .demo-showcase {
+                break-inside: avoid;
+            }
         }
     </style>
 </head>
-<body class="bg-gray-100">
-    <div id="root"></div>
+<body>
+    <div class="header">
+        <h1>TravelRoute</h1>
+        <p class="tagline">像复制歌单一样复制旅行路线</p>
+    </div>
 
-    <script type="text/babel">
-        const { useState, useEffect } = React;
+    <section class="section">
+        <h2>核心洞察</h2>
+        <div class="highlight">
+            <strong>问题：</strong>规划一次旅行平均需要8小时，查看5个以上平台<br>
+            <strong>解决方案：</strong>看到好路线 → 一键克隆 → AI个性化调整 → 3分钟完成规划
+        </div>
+        
+        <div class="metrics">
+            <div class="metric-card">
+                <div class="metric-value">5.1亿</div>
+                <div class="metric-label">国内自由行用户</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">89%</div>
+                <div class="metric-label">用户需要路线参考</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">3分钟</div>
+                <div class="metric-label">平均规划时间</div>
+            </div>
+        </div>
+    </section>
 
-        // 图标组件 - 简化版本
-        const Icon = ({ name, size = 20, className = "", ...props }) => {
-            const icons = {
-                home: (
-                    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className} {...props}>
-                        <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                        <polyline points="9,22 9,12 15,12 15,22"/>
-                    </svg>
-                ),
-                compass: (
-                    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className} {...props}>
-                        <circle cx="12" cy="12" r="10"/>
-                        <polygon points="16.24,7.76 14.12,14.12 7.76,16.24 9.88,9.88"/>
-                    </svg>
-                ),
-                plus: (
-                    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className} {...props}>
-                        <line x1="12" y1="5" x2="12" y2="19"/>
-                        <line x1="5" y1="12" x2="19" y2="12"/>
-                    </svg>
-                ),
-                user: (
-                    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className} {...props}>
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                        <circle cx="12" cy="7" r="4"/>
-                    </svg>
-                ),
-                search: (
-                    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className} {...props}>
-                        <circle cx="11" cy="11" r="8"/>
-                        <path d="m21 21-4.35-4.35"/>
-                    </svg>
-                ),
-                filter: (
-                    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className} {...props}>
-                        <polygon points="22,3 2,3 10,12.46 10,19 14,21 14,12.46"/>
-                    </svg>
-                ),
-                heart: (
-                    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className} {...props}>
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                    </svg>
-                ),
-                eye: (
-                    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className} {...props}>
-                        <path d="M1 12c0 0 4-8 11-8s11 8 11 8-4 8-11 8-4-8-11-8z"/>
-                        <circle cx="12" cy="12" r="3"/>
-                    </svg>
-                ),
-                clock: (
-                    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className} {...props}>
-                        <circle cx="12" cy="12" r="10"/>
-                        <polyline points="12,6 12,12 16,14"/>
-                    </svg>
-                ),
-                star: (
-                    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className} {...props}>
-                        <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
-                    </svg>
-                ),
-                users: (
-                    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className} {...props}>
-                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-                        <circle cx="9" cy="7" r="4"/>
-                        <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
-                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                    </svg>
-                ),
-                dollarSign: (
-                    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className} {...props}>
-                        <line x1="12" y1="1" x2="12" y2="23"/>
-                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                    </svg>
-                ),
-                sparkles: (
-                    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className} {...props}>
-                        <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
-                        <path d="M5 3v4"/>
-                        <path d="M19 17v4"/>
-                        <path d="M3 5h4"/>
-                        <path d="M17 19h4"/>
-                    </svg>
-                ),
-                x: (
-                    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className} {...props}>
-                        <path d="m18 6-12 12"/>
-                        <path d="m6 6 12 12"/>
-                    </svg>
-                ),
-                chevronLeft: (
-                    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className} {...props}>
-                        <polyline points="15,18 9,12 15,6"/>
-                    </svg>
-                ),
-                chevronRight: (
-                    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className} {...props}>
-                        <polyline points="9,18 15,12 9,6"/>
-                    </svg>
-                ),
-                check: (
-                    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className} {...props}>
-                        <polyline points="20,6 9,17 4,12"/>
-                    </svg>
-                ),
-                mapPin: (
-                    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className} {...props}>
-                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                        <circle cx="12" cy="10" r="3"/>
-                    </svg>
-                ),
-                share2: (
-                    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className} {...props}>
-                        <circle cx="18" cy="5" r="3"/>
-                        <circle cx="6" cy="12" r="3"/>
-                        <circle cx="18" cy="19" r="3"/>
-                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
-                        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
-                    </svg>
-                ),
-                bookmark: (
-                    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className} {...props}>
-                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
-                    </svg>
-                )
-            };
-            
-            return icons[name] || <div>?</div>;
-        };
+    <section class="section">
+        <h2>产品演示</h2>
+        <div class="demo-showcase">
+            <h3>🚀 MVP已上线</h3>
+            <p>完整的落地页 + 可交互的产品原型</p>
+            <a href="travelroute-demo/demo.html" class="demo-link" target="_blank">立即体验产品 Demo</a>
+            <p style="margin-top: 15px; font-size: 14px; color: #666;">
+                已实现：路线展示、AI生成界面、克隆功能原型
+            </p>
+        </div>
+    </section>
 
-        // 模拟数据
-        const mockRoutes = [
-            {
-                id: 1,
-                title: "成都3天2夜美食之旅",
-                description: "深度探索成都地道美食，从街边小吃到网红餐厅一网打尽，适合美食爱好者的完美路线",
-                author: { name: "美食探索家", isVerified: true },
-                cover: "https://images.unsplash.com/photo-1583394293214-28ded15ee548?w=800&h=600&fit=crop",
-                duration: "3天2夜",
-                intensity: "悠闲型",
-                tags: ["美食", "文化", "摄影"],
-                stats: { likes: 3456, views: 15678 },
-                totalCost: "¥800-1200",
-                aiGenerated: false,
-                verified: true
-            },
-            {
-                id: 2,
-                title: "AI定制：杭州3-4天精选路线",
-                description: "根据您的偏好智能生成的杭州旅行路线，包含美食、摄影、文化等元素",
-                author: { name: "AI旅行助手", isVerified: true },
-                cover: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&h=600&fit=crop",
-                duration: "3-4天",
-                intensity: "均衡型",
-                tags: ["美食", "摄影", "AI推荐"],
-                stats: { likes: 128, views: 567 },
-                totalCost: "¥1000-3000",
-                aiGenerated: true,
-                verified: false
-            }
-        ];
+    <section class="section">
+        <h2>竞争优势</h2>
+        <table class="comparison-table">
+            <tr>
+                <th>平台</th>
+                <th>定位</th>
+                <th>问题</th>
+                <th>我们的机会</th>
+            </tr>
+            <tr>
+                <td><strong>马蜂窝</strong></td>
+                <td>攻略社区</td>
+                <td>内容冗长，难以直接使用</td>
+                <td rowspan="4" style="background: #FFF5F0; font-weight: bold;">
+                    专注"可执行路线"<br>
+                    + 一键克隆机制<br>
+                    + AI个性化调整<br>
+                    = 极简规划体验
+                </td>
+            </tr>
+            <tr>
+                <td><strong>携程</strong></td>
+                <td>OTA预订</td>
+                <td>路线功能薄弱，重销售</td>
+            </tr>
+            <tr>
+                <td><strong>小红书</strong></td>
+                <td>种草平台</td>
+                <td>碎片化内容，缺乏结构</td>
+            </tr>
+            <tr>
+                <td><strong>穷游</strong></td>
+                <td>行程助手</td>
+                <td>工具复杂，上手门槛高</td>
+            </tr>
+        </table>
+    </section>
 
-        // 主应用组件
-        const TravelRouteApp = () => {
-            const [activeTab, setActiveTab] = useState('home');
-            const [selectedRoute, setSelectedRoute] = useState(null);
-            const [showFilters, setShowFilters] = useState(false);
-            const [showAIPanel, setShowAIPanel] = useState(false);
-            const [routes, setRoutes] = useState(mockRoutes);
+    <section class="section">
+        <h2>执行计划</h2>
+        <div class="roadmap">
+            <div class="roadmap-item">
+                <strong>当前阶段</strong>
+                <p>✅ MVP框架完成<br>
+                ✅ 落地页上线<br>
+                ✅ 核心功能原型</p>
+            </div>
+            <div class="roadmap-item">
+                <strong>种子轮后 [0-3个月]</strong>
+                <p>• 完成AI算法接入<br>
+                • 1000名种子用户<br>
+                • 产品迭代3个版本</p>
+            </div>
+            <div class="roadmap-item">
+                <strong>产品上线 [3-6个月]</strong>
+                <p>• iOS/Android双端发布<br>
+                • 10万注册用户<br>
+                • 1万条优质路线</p>
+            </div>
+            <div class="roadmap-item">
+                <strong>规模化 [6-12个月]</strong>
+                <p>• 50万月活用户<br>
+                • 会员体系上线<br>
+                • Pre-A轮融资</p>
+            </div>
+        </div>
+    </section>
 
-            // AI生成面板
-            const AIGeneratePanel = () => {
-                const [destination, setDestination] = useState('');
-                const [duration, setDuration] = useState('');
-                const [interests, setInterests] = useState([]);
-                const [aiGenerating, setAiGenerating] = useState(false);
+    <section class="section">
+        <h2>团队背景</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <h3>黄志鹏｜CEO/CTO</h3>
+                <p>• 连续创业者，全栈工程师<br>
+                • 曾获广州航道局运营大赛第一<br>
+                • <strong>目前状态：</strong>兼职开发中</p>
+            </div>
+            <div class="team-member">
+                <h3>李维赫｜CPO</h3>
+                <p>• 旅游管理专业背景<br>
+                • 深度用户研究能力<br>
+                • <strong>目前状态：</strong>全职投入</p>
+            </div>
+        </div>
+        <div class="highlight">
+            <strong>团队承诺：</strong>获得投资后，创始人将全职投入，并引入1-2名核心成员
+        </div>
+    </section>
 
-                const interestOptions = ['美食', '摄影', '文化', '自然', '购物', '艺术'];
-                
-                const handleGenerate = () => {
-                    if (!destination || !duration) {
-                        alert('请填写目的地和出行时长');
-                        return;
-                    }
-                    
-                    setAiGenerating(true);
-                    
-                    setTimeout(() => {
-                        const newRoute = {
-                            id: Date.now(),
-                            title: `AI定制：${destination}${duration}精选路线`,
-                            description: `根据您的偏好智能生成的${destination}旅行路线，包含${interests.join('、')}等元素`,
-                            author: { name: "AI旅行助手", isVerified: true },
-                            cover: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
-                            duration: duration,
-                            intensity: "均衡型",
-                            tags: [...interests, 'AI推荐'],
-                            stats: { likes: 0, views: 1 },
-                            totalCost: "¥1000-3000",
-                            aiGenerated: true,
-                            verified: false
-                        };
-                        
-                        setRoutes([newRoute, ...routes]);
-                        setAiGenerating(false);
-                        setShowAIPanel(false);
-                        alert('AI路线生成成功！');
-                    }, 2000);
-                };
+    <section class="section">
+        <h2>融资需求</h2>
+        <div class="highlight">
+            <h3>种子轮：150万人民币</h3>
+            <p><strong>估值：</strong>1000万人民币（出让15%股份）</p>
+        </div>
+        
+        <div class="metrics">
+            <div class="metric-card">
+                <div class="metric-value">40%</div>
+                <div class="metric-label">产品开发<br><small>60万</small></div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">30%</div>
+                <div class="metric-label">团队薪资<br><small>45万</small></div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">30%</div>
+                <div class="metric-label">运营推广<br><small>45万</small></div>
+            </div>
+        </div>
+        
+        <p style="text-align: center; margin-top: 30px; color: #666;">
+            资金使用周期：12个月｜目标：验证PMF，达到10万用户
+        </p>
+    </section>
 
-                const toggleInterest = (interest) => {
-                    setInterests(prev => 
-                        prev.includes(interest) 
-                            ? prev.filter(i => i !== interest)
-                            : [...prev, interest]
-                    );
-                };
+    <section class="section">
+        <h2>为什么是我们</h2>
+        <div style="font-size: 18px; line-height: 1.8;">
+            <p>1️⃣ <strong>专注的定位：</strong>不做大而全，只做"路线分享"这一件事</p>
+            <p>2️⃣ <strong>清晰的路径：</strong>从工具切入，通过社区沉淀，最终实现交易闭环</p>
+            <p>3️⃣ <strong>极致的体验：</strong>3分钟完成规划 vs 行业平均8小时</p>
+            <p>4️⃣ <strong>已有的进展：</strong>MVP已完成，产品思路经过验证</p>
+        </div>
+    </section>
 
-                return (
-                    <div className="fixed inset-0 bg-black bg-opacity-50 z-50" onClick={(e) => {
-                        if (e.target === e.currentTarget) setShowAIPanel(false);
-                    }}>
-                        <div className="fixed inset-x-0 bottom-0 bg-white rounded-t-2xl max-h-[80vh] animate-slide-up">
-                            <div className="p-4 border-b">
-                                <div className="flex items-center justify-between">
-                                    <h3 className="text-lg font-bold flex items-center">
-                                        <Icon name="sparkles" className="mr-2 text-purple-500" />
-                                        AI智能生成路线
-                                    </h3>
-                                    <button onClick={() => setShowAIPanel(false)}>
-                                        <Icon name="x" className="text-gray-400" />
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div className="p-4 overflow-y-auto max-h-96">
-                                <div className="space-y-4">
-                                    <div>
-                                        <label className="block text-sm font-medium mb-2">目的地 *</label>
-                                        <input 
-                                            type="text" 
-                                            placeholder="输入城市或地区"
-                                            className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
-                                            value={destination}
-                                            onChange={(e) => setDestination(e.target.value)}
-                                        />
-                                    </div>
-
-                                    <div>
-                                        <label className="block text-sm font-medium mb-2">出行时长 *</label>
-                                        <div className="grid grid-cols-2 gap-2">
-                                            {['1-2天', '3-4天', '5-7天', '7天以上'].map((d) => (
-                                                <button 
-                                                    key={d}
-                                                    onClick={() => setDuration(d)}
-                                                    className={`py-2 px-3 rounded-lg text-sm font-medium ${
-                                                        duration === d 
-                                                            ? 'bg-blue-500 text-white' 
-                                                            : 'bg-gray-100'
-                                                    }`}
-                                                >
-                                                    {d}
-                                                </button>
-                                            ))}
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <label className="block text-sm font-medium mb-2">兴趣偏好</label>
-                                        <div className="flex flex-wrap gap-2">
-                                            {interestOptions.map((interest) => (
-                                                <button 
-                                                    key={interest}
-                                                    onClick={() => toggleInterest(interest)}
-                                                    className={`px-3 py-1 rounded-full text-sm ${
-                                                        interests.includes(interest) 
-                                                            ? 'bg-blue-500 text-white' 
-                                                            : 'bg-gray-100'
-                                                    }`}
-                                                >
-                                                    {interest}
-                                                </button>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="p-4 border-t">
-                                <button 
-                                    onClick={handleGenerate}
-                                    disabled={!destination || !duration || aiGenerating}
-                                    className="w-full bg-gradient-to-r from-purple-500 to-blue-500 text-white py-3 rounded-lg font-medium disabled:opacity-50"
-                                >
-                                    {aiGenerating ? 'AI正在生成路线...' : '生成路线'}
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                );
-            };
-
-            // 路线详情页
-            const RouteDetail = () => {
-                if (!selectedRoute) return null;
-
-                return (
-                    <div className="fixed inset-0 bg-white z-40">
-                        <div className="relative">
-                            <img 
-                                src={selectedRoute.cover} 
-                                alt={selectedRoute.title} 
-                                className="w-full h-64 object-cover"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                            
-                            <button 
-                                onClick={() => setSelectedRoute(null)} 
-                                className="absolute top-4 left-4 bg-black/30 text-white p-2 rounded-full"
-                            >
-                                <Icon name="chevronLeft" size={24} />
-                            </button>
-                            
-                            <div className="absolute bottom-4 left-4 right-4">
-                                <h1 className="text-white text-2xl font-bold mb-2">{selectedRoute.title}</h1>
-                                <div className="flex items-center space-x-4 text-white/90 text-sm">
-                                    <span className="flex items-center">
-                                        <Icon name="clock" size={16} className="mr-1" />
-                                        {selectedRoute.duration}
-                                    </span>
-                                    <span className="flex items-center">
-                                        <Icon name="dollarSign" size={16} className="mr-1" />
-                                        {selectedRoute.totalCost}
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="p-4">
-                            <p className="text-gray-600 mb-4">{selectedRoute.description}</p>
-                            
-                            <div className="flex flex-wrap gap-2 mb-4">
-                                {selectedRoute.tags.map((tag, index) => (
-                                    <span key={index} className="px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-sm">
-                                        {tag}
-                                    </span>
-                                ))}
-                            </div>
-
-                            <div className="flex items-center justify-between text-sm text-gray-500">
-                                <span className="flex items-center">
-                                    <Icon name="eye" size={16} className="mr-1" />
-                                    {selectedRoute.stats.views} 浏览
-                                </span>
-                                <span className="flex items-center">
-                                    <Icon name="heart" size={16} className="mr-1" />
-                                    {selectedRoute.stats.likes} 点赞
-                                </span>
-                            </div>
-                        </div>
-
-                        <div className="absolute bottom-0 left-0 right-0 bg-white border-t p-4">
-                            <div className="flex space-x-3">
-                                <button className="flex-1 bg-blue-500 text-white py-3 rounded-lg font-medium">
-                                    克隆路线
-                                </button>
-                                <button className="flex-1 bg-gray-100 text-gray-700 py-3 rounded-lg font-medium">
-                                    开始导航
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                );
-            };
-
-            // 首页
-            const HomeTab = () => (
-                <div className="flex-1 overflow-y-auto pb-20">
-                    <div className="sticky top-0 bg-white z-10 p-4">
-                        <div className="flex items-center space-x-3">
-                            <div className="flex-1 relative">
-                                <Icon name="search" className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                                <input 
-                                    type="text" 
-                                    placeholder="搜索目的地、路线或用户"
-                                    className="w-full pl-10 pr-4 py-3 bg-gray-100 rounded-lg"
-                                />
-                            </div>
-                            <button 
-                                onClick={() => setShowFilters(!showFilters)}
-                                className="p-3 bg-gray-100 rounded-lg"
-                            >
-                                <Icon name="filter" />
-                            </button>
-                        </div>
-                        
-                        {showFilters && (
-                            <div className="mt-3 flex space-x-2 overflow-x-auto">
-                                {['全部', '美食', '自然', '文化', '冒险'].map((filter) => (
-                                    <button 
-                                        key={filter}
-                                        className="px-4 py-2 bg-gray-100 rounded-full text-sm whitespace-nowrap"
-                                    >
-                                        {filter}
-                                    </button>
-                                ))}
-                            </div>
-                        )}
-                    </div>
-
-                    <div className="px-4 space-y-4">
-                        {routes.map((route) => (
-                            <div 
-                                key={route.id} 
-                                onClick={() => setSelectedRoute(route)}
-                                className="bg-white rounded-2xl shadow-sm overflow-hidden cursor-pointer"
-                            >
-                                <div className="relative">
-                                    <img 
-                                        src={route.cover} 
-                                        alt={route.title} 
-                                        className="w-full h-48 object-cover"
-                                    />
-                                    {route.aiGenerated && (
-                                        <div className="absolute top-3 left-3 bg-purple-500/90 text-white px-3 py-1 rounded-full text-xs font-medium flex items-center">
-                                            <Icon name="sparkles" size={12} className="mr-1" />
-                                            AI生成
-                                        </div>
-                                    )}
-                                    {route.verified && (
-                                        <div className="absolute top-3 right-3 bg-green-500/90 text-white px-3 py-1 rounded-full text-xs font-medium flex items-center">
-                                            <Icon name="check" size={12} className="mr-1" />
-                                            官方认证
-                                        </div>
-                                    )}
-                                </div>
-                                
-                                <div className="p-4">
-                                    <h3 className="font-bold text-lg mb-2">{route.title}</h3>
-                                    <p className="text-gray-600 text-sm mb-3 line-clamp-2">{route.description}</p>
-                                    
-                                    <div className="flex items-center space-x-4 text-sm text-gray-500 mb-3">
-                                        <span className="flex items-center">
-                                            <Icon name="clock" size={16} className="mr-1" />
-                                            {route.duration}
-                                        </span>
-                                        <span className="flex items-center">
-                                            <Icon name="dollarSign" size={16} className="mr-1" />
-                                            {route.totalCost}
-                                        </span>
-                                        <span className="flex items-center">
-                                            <Icon name="users" size={16} className="mr-1" />
-                                            {route.intensity}
-                                        </span>
-                                    </div>
-                                    
-                                    <div className="flex flex-wrap gap-2 mb-3">
-                                        {route.tags.map((tag, index) => (
-                                            <span key={index} className="px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-xs">
-                                                {tag}
-                                            </span>
-                                        ))}
-                                    </div>
-                                    
-                                    <div className="flex items-center justify-between">
-                                        <span className="text-sm text-gray-600">{route.author.name}</span>
-                                        <div className="flex items-center space-x-3 text-sm text-gray-500">
-                                            <span className="flex items-center">
-                                                <Icon name="eye" size={16} className="mr-1" />
-                                                {route.stats.views}
-                                            </span>
-                                            <span className="flex items-center">
-                                                <Icon name="heart" size={16} className="mr-1" />
-                                                {route.stats.likes}
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            );
-
-            // 其他标签页的简化版本
-            const OtherTab = ({ title }) => (
-                <div className="flex-1 flex items-center justify-center">
-                    <div className="text-center">
-                        <h2 className="text-2xl font-bold mb-2">{title}</h2>
-                        <p className="text-gray-500">功能开发中...</p>
-                    </div>
-                </div>
-            );
-
-            return (
-                <div className="mobile-container bg-gray-50 flex flex-col">
-                    {/* 主要内容区域 */}
-                    {selectedRoute ? (
-                        <RouteDetail />
-                    ) : (
-                        <>
-                            {activeTab === 'home' && <HomeTab />}
-                            {activeTab === 'discover' && <OtherTab title="发现精彩" />}
-                            {activeTab === 'profile' && <OtherTab title="个人中心" />}
-                        </>
-                    )}
-
-                    {/* AI 面板 */}
-                    {showAIPanel && <AIGeneratePanel />}
-
-                    {/* 底部导航栏 */}
-                    {!selectedRoute && (
-                        <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 max-w-md w-full bg-white border-t">
-                            <div className="flex items-center justify-around py-2">
-                                {[
-                                    { id: 'home', icon: 'home', label: '首页' },
-                                    { id: 'discover', icon: 'compass', label: '发现' },
-                                    { id: 'create', icon: 'plus', label: '创建', special: true },
-                                    { id: 'profile', icon: 'user', label: '我的' }
-                                ].map((tab) => (
-                                    <button
-                                        key={tab.id}
-                                        onClick={() => {
-                                            if (tab.id === 'create') {
-                                                setShowAIPanel(true);
-                                            } else {
-                                                setActiveTab(tab.id);
-                                            }
-                                        }}
-                                        className={`flex flex-col items-center p-2 ${
-                                            tab.special 
-                                                ? 'bg-blue-500 text-white rounded-full -mt-4 shadow-lg' 
-                                                : activeTab === tab.id 
-                                                  ? 'text-blue-500' 
-                                                  : 'text-gray-400'
-                                        }`}
-                                    >
-                                        <Icon name={tab.icon} size={tab.special ? 24 : 20} />
-                                        {!tab.special && (
-                                            <span className="text-xs mt-1">{tab.label}</span>
-                                        )}
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
-                    )}
-                </div>
-            );
-        };
-
-        // 渲染应用
-        ReactDOM.render(<TravelRouteApp />, document.getElementById('root'));
-    </script>
+    <div class="contact">
+        <h3>联系我们</h3>
+        <p>
+            黄志鹏：13032446982<br>
+            邮箱：<a href="mailto:TravelRouteForShare@outlook.com">TravelRouteForShare@outlook.com</a>
+        </p>
+        <p style="margin-top: 20px; font-size: 14px; opacity: 0.8;">
+            TravelRoute ｜ 让每一次旅行都值得被复制 ｜ 2025.01
+        </p>
+    </div>
 </body>
 </html>
+```--- End of CSV data ---
